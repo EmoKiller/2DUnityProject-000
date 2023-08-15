@@ -11,21 +11,24 @@ public class PlayerControllerPC : MonoBehaviour
     [SerializeField] private float smoothTime = 0.01f;
 
 
-    public float horizontal { get; private set; }
-    public float vertical { get; private set; }
+
+    public float horizontal { get; set; }
+    public float vertical { get; set; }
     public bool isAlive { get; private set; }
 
     private bool horizontalDown => horizontal != 0;
     private Vector2 refVelocity = Vector2.zero;
     private Vector2 targetVelocity = Vector2.zero;
 
-    private Animator ani;
+    private Animator ani = null;
     private Rigidbody2D rb = null;
+    private JoyStickLManager joystickLManager = null;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
+        joystickLManager = GameObject.FindGameObjectWithTag("JoyStickManager").GetComponent<JoyStickLManager>();
         isAlive = true;
     }
     void Start()
@@ -35,8 +38,12 @@ public class PlayerControllerPC : MonoBehaviour
 
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (!joystickLManager.joystickMove)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
+
     }
     private void FixedUpdate()
     {
