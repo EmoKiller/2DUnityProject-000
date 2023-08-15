@@ -6,11 +6,12 @@ TagManager:
   tags:
   - JoyStick
   - JoyStickHandle
+  - JoyStickManager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
