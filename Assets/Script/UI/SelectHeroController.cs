@@ -18,12 +18,12 @@ public class SelectHeroController : MonoBehaviour
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        SwitchInfomationHero();
-        
+        UpdateInfomationHero();
+        animator.runtimeAnimatorController = controller[0];
     }   
     private void Start()
     {
-        animator.runtimeAnimatorController = controller[0];
+        
     }
     
     public void Prev()
@@ -31,20 +31,17 @@ public class SelectHeroController : MonoBehaviour
         if (index <= 0)
             return;
         animator.runtimeAnimatorController = controller[--index];
-        SwitchInfomationHero();
+        UpdateInfomationHero();
     }
     public void Next()
     {
         if (index >= controller.Count - 1)
             return;
         animator.runtimeAnimatorController = controller[++index];
-        SwitchInfomationHero();
+        UpdateInfomationHero();
     }
-    private void SwitchInfomationHero()
-    {
-        UpdateInfomationHero(ConfigDataHelper.GameConfig.heroConfig.heroClass[(HeroClassType)index].baseAttribute);
-    }
-    private void UpdateInfomationHero(Dictionary<AttributeType, BaseAttribute> datas)
+    
+    private void UpdateInfomationHero()
     {
         HeroClassType type = (HeroClassType)index;
         heroClassChoose.text = type.ToString();
