@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Transform player = null;
+    [SerializeField] private Transform player = null;
     public Vector3 offset;
 
     private void Awake()

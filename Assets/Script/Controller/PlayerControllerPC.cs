@@ -20,14 +20,14 @@ public class PlayerControllerPC : MonoBehaviour
     private Vector2 refVelocity = Vector2.zero;
     private Vector2 targetVelocity = Vector2.zero;
 
-    private Animator ani = null;
-    private Rigidbody2D rb = null;
-    private JoyStickLManager joystickLManager = null;
+    [SerializeField] private Animator ani = null;
+    [SerializeField] private Rigidbody2D rb = null;
+    [SerializeField] private JoyStickLManager joystickLManager = null;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        ani = GetComponent<Animator>();
+        ani = GetComponentInChildren<Animator>();
         joystickLManager = GameObject.FindGameObjectWithTag("JoyStickManager").GetComponent<JoyStickLManager>();
         isAlive = true;
     }
@@ -63,7 +63,13 @@ public class PlayerControllerPC : MonoBehaviour
     }
     private void SetAnimationMove(float horizontal, float Vertical)
     {
-        ani.SetFloat("Horizontal", horizontal);
-        ani.SetFloat("Vertical", Vertical);
+        if (horizontal != 0 || Vertical != 0)
+        {
+            ani.SetInteger("State", 1);
+        }
+        else
+        {
+            ani.SetInteger("State", 0);
+        }
     }
 }
