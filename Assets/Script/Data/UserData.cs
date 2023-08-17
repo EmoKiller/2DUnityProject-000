@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UserData
 {
-    public int userLevel = 1;
-    public int exp = 0;
-    public Dictionary<string,UserData> data = new Dictionary<string,UserData>();
+
+    public Dictionary<string, HeroData> data = new Dictionary<string, HeroData>();
+    public UserData() { }
 }

@@ -2,12 +2,16 @@
 
 public enum HeroClassType
 {
-    Warior,
+    Warrior,
     Archer,
     Magican,
     Tanker,
     Healer,
     Assassins
+}
+public enum AttributeTypeOfHero
+{
+    baseAttribute,
 }
 public enum AttributeType
 {
