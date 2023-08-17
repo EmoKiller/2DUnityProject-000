@@ -8,21 +8,21 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField]private Button buttonTapToStart;
-    [SerializeField]private Button buttonNewGame;
-    [SerializeField]private Button buttonLoadGame;
-    [SerializeField]private Button buttonQuit;
-    [SerializeField]private Button buttonBackMenu;
+    [SerializeField] private Button buttonTapToStart;
+    [SerializeField] private Button buttonNewGame;
+    [SerializeField] private Button buttonLoadGame;
+    [SerializeField] private Button buttonQuit;
+    [SerializeField] private Button buttonBackMenu;
     [SerializeField] private Button buttonPrevSelectHero;
     [SerializeField] private Button buttonNextSelectHero;
+    [SerializeField] private Button chooseHero;
+    [SerializeField] private RectTransform mainMenuBackGround;
 
-    [SerializeField]private RectTransform mainMenuBackGround;
-
-    [SerializeField]private GameObject tapToStart;
-    [SerializeField]private GameObject menu;
-    [SerializeField]private GameObject selectHero;
-    [SerializeField]private GameObject menuLoadGame;
-    [SerializeField]private GameObject gameobjectBackMenu;
+    [SerializeField] private GameObject tapToStart;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject selectHero;
+    [SerializeField] private GameObject menuLoadGame;
+    [SerializeField] private GameObject gameobjectBackMenu;
 
     [SerializeField] private SelectHeroController showHero;
 
@@ -36,15 +36,21 @@ public class MainMenuManager : MonoBehaviour
         buttonBackMenu.onClick.AddListener(ButtonBackMenu);
         buttonPrevSelectHero.onClick.AddListener(SelectPrev);
         buttonNextSelectHero.onClick.AddListener(SelectNext);
+        chooseHero.onClick.AddListener(ChooseHero);
     }
-    public void TapToStart()
+    private void ChooseHero() 
+    { 
+
+    }
+
+    private void TapToStart()
     {
         mainMenuBackGround.DOScale(2,1);
         mainMenuBackGround.DOLocalMoveY(300,1);
         tapToStart.SetActive(false);
         menu.SetActive(true);
     }
-    public void Quit()
+    private void Quit()
     {
         tapToStart.SetActive(true);
         menu.SetActive(false);
@@ -53,26 +59,26 @@ public class MainMenuManager : MonoBehaviour
         mainMenuBackGround.DOLocalMoveY(0, 1);
         Debug.Log("Quit");
     }
-    public void NewGame()
+    private void NewGame()
     {
         menu.SetActive(false);
         selectHero.SetActive(true);
         gameobjectBackMenu.SetActive(true);
     }
-    public void SelectPrev()
+    private void SelectPrev()
     {
         showHero.Prev();
     }
-    public void SelectNext()
+    private void SelectNext()
     {
         showHero.Next();
     }
-    public void LoadGame()
+    private void LoadGame()
     {
         menu.SetActive(false);
         gameobjectBackMenu.SetActive(true);
     }
-    public void ButtonBackMenu()
+    private void ButtonBackMenu()
     {
         menu.SetActive(true);
         selectHero.SetActive(false);
@@ -80,7 +86,7 @@ public class MainMenuManager : MonoBehaviour
         gameobjectBackMenu.SetActive(false);
     }
 
-    public void PlayGame()
+    private void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

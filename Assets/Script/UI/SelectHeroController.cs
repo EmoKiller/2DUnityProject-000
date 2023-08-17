@@ -2,31 +2,56 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectHeroController : MonoBehaviour
 {
-    [SerializeField] List<RuntimeAnimatorController> controller = new List<RuntimeAnimatorController>();
-    [SerializeField] int index = 0;
-    [SerializeField] Animator animator;
+    
+    [SerializeField] private TextMeshProUGUI heroClassChoose;
+    [SerializeField] private TextMeshProUGUI sex;
+    [SerializeField] private List<TextMeshProUGUI> textMeshPro;
+    [SerializeField] private List<RuntimeAnimatorController> controller = new List<RuntimeAnimatorController>();
+    [SerializeField] private int index = 0;
+    [SerializeField] private Animator animator;
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-    }
+        SwitchInfomationHero();
+        
+    }   
     private void Start()
     {
         animator.runtimeAnimatorController = controller[0];
     }
+    
     public void Prev()
     {
         if (index <= 0)
             return;
         animator.runtimeAnimatorController = controller[--index];
+        SwitchInfomationHero();
     }
     public void Next()
     {
         if (index >= controller.Count - 1)
             return;
         animator.runtimeAnimatorController = controller[++index];
+        SwitchInfomationHero();
+    }
+    private void SwitchInfomationHero()
+    {
+        UpdateInfomationHero(ConfigDataHelper.GameConfig.heroConfig.heroClass[(HeroClassType)index].baseAttribute);
+    }
+    private void UpdateInfomationHero(Dictionary<AttributeType, BaseAttribute> datas)
+    {
+        HeroClassType type = (HeroClassType)index;
+        heroClassChoose.text = type.ToString();
+        for ( int i = 0; i <= textMeshPro.Count - 1; i++)
+        {
+            textMeshPro[i].text = ConfigDataHelper.GameConfig.heroConfig.heroClass[(HeroClassType)index].baseAttribute[(AttributeType)i].value.ToString();
+            
+        }
     }
 }

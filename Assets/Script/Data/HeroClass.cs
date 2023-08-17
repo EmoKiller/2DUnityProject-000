@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class HeroClass
 {
-    public Dictionary<AttributeType, BaseAttribute> baseAttribute = new Dictionary<AttributeType, BaseAttribute>();
+    public Dictionary<AttributeType,BaseAttribute> baseAttribute = new Dictionary<AttributeType,BaseAttribute>();
 }
