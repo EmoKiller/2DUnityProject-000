@@ -32,8 +32,7 @@ public class JoyStickLManager : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     void Update()
     {
-        Player.horizontal = (int)joystickVec.x;
-        Player.vertical = (int)joystickVec.y;
+         
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -59,7 +58,8 @@ public class JoyStickLManager : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             handle.transform.position = joystickTouchPos + joystickVec * joystickRadius;
         }
-        
+        Player.horizontal = joystickVec.x;
+        Player.vertical = joystickVec.y;
     }
 
     public void OnPointerUp(PointerEventData eventData)

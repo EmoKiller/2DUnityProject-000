@@ -2515,6 +2515,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   smoothTime: 0.01
+  mutiRun: 1
+  ani: {fileID: 0}
+  rb: {fileID: 0}
+  joystickLManager: {fileID: 0}
 --- !u!70 &3658920536975242387
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

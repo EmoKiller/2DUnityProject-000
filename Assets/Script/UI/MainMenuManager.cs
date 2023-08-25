@@ -39,8 +39,9 @@ public class MainMenuManager : MonoBehaviour
         chooseHero.onClick.AddListener(ChooseHero);
     }
     private void ChooseHero() 
-    { 
-
+    {
+        //float accs = ConfigDataHelper.UserData.data["Hero1"].attributes[(AttributeType)1].value;
+        Debug.Log("ChooseHero");
     }
 
     private void TapToStart()
