@@ -26,4 +26,12 @@ public class HeroAnimatorController : MonoBehaviour
             _Animator.SetInteger("State", 0);
         }
     }
+    public void Attack()
+    {
+        _Animator.SetTrigger("Slash");
+    }
+    public void Rolling()
+    {
+        _Animator.SetTrigger("Rolling");
+    }
 }
