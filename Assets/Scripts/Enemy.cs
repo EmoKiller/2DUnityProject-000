@@ -9,6 +9,11 @@ public class Enemy : MonoBehaviour
     BoxCollider2D boxCollider;
     float health = 5;
     public bool Alive => health > 0;
+    private void OnEnable()
+    {
+        health = 5;
+        SetBoxCollider(false);
+    }
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -21,7 +26,7 @@ public class Enemy : MonoBehaviour
     public void MoveToPosition(Vector3 vec)
     {
         SetBoxCollider(false);
-        transform.DOMove(vec, 3).OnComplete(() =>
+        transform.DOMove(vec, GameManager.Instance.TimeMovingOfEnemy).OnComplete(() =>
         { 
             SetBoxCollider(true); 
         });
@@ -29,8 +34,9 @@ public class Enemy : MonoBehaviour
     public void OnHitButtlet()
     {
         health -= 1;
-        if (health <= 0)
+        if (!Alive)
         {
+            SetBoxCollider(false);
             gameObject.SetActive(false);
             GameManager.OnEnemyDead?.Invoke();
         }
@@ -38,5 +44,10 @@ public class Enemy : MonoBehaviour
     public void SetBoxCollider(bool value)
     {
         boxCollider.enabled = value;
+    }
+    public void SpawnRandom()
+    {
+        transform.position = transform.position + new Vector3(UnityEngine.Random.Range(-10, 10), 10, 0);
+        gameObject.SetActive(true);
     }
 }

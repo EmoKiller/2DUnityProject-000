@@ -9,6 +9,7 @@ TagManager:
   - JoyStickManager
   - Buttlet
   - Enemy
+  - SpawnEnemy
   layers:
   - Default
   - TransparentFX

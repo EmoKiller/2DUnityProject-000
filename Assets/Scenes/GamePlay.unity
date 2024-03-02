@@ -577,6 +577,7 @@ MonoBehaviour:
   width: 7
   spacing: -1
   center: 2
+  radius: 0
 --- !u!1001 &1146009104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,9 +664,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5986f18887ed72f469a9a7b2a9d07a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _SpawnEnemy: {fileID: 694926403}
   _TextScore: {fileID: 1781579531}
   enemy: {fileID: 69977089822752966, guid: 095c3f0905175f04184298e9f93491d1, type: 3}
   buttlet: {fileID: 4891396221866357200, guid: f05db7e415b953943ba7e71304a6581d, type: 3}
+  score: 0
+  timeMovingOfEnemy: 3
+  timeChangeSquad: 5
 --- !u!4 &1763261696
 Transform:
   m_ObjectHideFlags: 0
