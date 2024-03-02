@@ -7,6 +7,8 @@ TagManager:
   - JoyStick
   - JoyStickHandle
   - JoyStickManager
+  - Buttlet
+  - Enemy
   layers:
   - Default
   - TransparentFX
